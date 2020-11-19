@@ -1,5 +1,5 @@
 # SF100Linux
-Linux software for Dediprog SF100 and SF600 SPI flash programmers
+Linux software for Dediprog SF100 and SF600 SPI flash programmers.
 
 ## Building
 To compile the project, first install required dependencies:
@@ -11,16 +11,16 @@ $ cd SF100Linux
 $ make
 ```
 
-The resulting binary should be called `dpcmd` and located in the root of the
-source tree. There is no install target at the moment.
+The resulting binary `dpcmd` is located in the root of the source tree.
 
 ## Usage
-Most basic usage is writing a whole image file to a flash chip:
+The most basic usage is writing a whole image file to a flash chip:
 ```bash
-$ ./dpcmd --auto image.bin --verify
+$ dpcmd --auto image.bin --verify
 ```
 
-This will automatically detect the chip, read out the chip contents, replace
-the ones that differ and perform a read and verification after writing.
+The `--auto` flag ensures that the current chip contents are read out, compared
+to the data being written and only the regions that differ are written to the
+chip. In combination with `--verify` verifies written data integrity.
 
 For more advanced usage see `dpcmd --help`.
